@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services | LIHE Community Connect</title>
+
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Link to your external stylesheet -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="shortcut icon" href="Images/LOGO.png" type="image/x-icon">
+
+    <!-- Google Fonts (Poppins) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Configure Tailwind with New Theme -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            light: '#ff3333',
+                            DEFAULT: '#ff0000',
+                            dark: '#cc0000',
+                        },
+                        // Overriding gray scale to match the new dark theme
+                        gray: {
+                            100: '#cccccc',
+                            300: '#bbbbbb',
+                            400: '#888888',
+                            800: '#1a1a1a', // card background
+                            900: '#0a0a0a', // darker background
+                            950: '#000000', // main background
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-gray-950 text-gray-100 font-sans antialiased">
+
+    <!-- === HEADER / NAVBAR (NEW) === -->
+    <header class="navbar">
+        <div class="logo">
+            <img src="Images/logo-lihe.png" alt="LIHE Logo">
+        </div>
+        <button class="menu-toggle" aria-label="Toggle Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html" class="active">Service</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="nav-buttons">
+            <button class="volunteer">Volunteer</button>
+            <button class="donate">Donate!</button>
+        </div>
+    </header>
+
+    <!-- === PAGE HEADER === -->
+    <section class="border-b border-white/10 pt-20"
+        style="background: linear-gradient(165deg, #1a0000 0%, #000000 100%); position: relative; overflow: hidden;">
+        <div
+            style="content: ''; position: absolute; top: -50%; right: -20%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(255, 0, 0, 0.1), transparent); border-radius: 50%; pointer-events: none;">
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center" style="position: relative; z-index: 1;">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-white">
+                Our Service <span class="text-brand">Categories</span>
+            </h1>
+            <p class="mt-4 text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
+                Explore the areas where you can make a meaningful impact and connect with your community.
+            </p>
+        </div>
+    </section>
+
+    <!-- === SERVICES CONTAINER (ORIGINAL LAYOUT, NEW THEME) === -->
+    <main class="py-24 sm:py-32">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="space-y-20 md:space-y-28">
+
+                <!-- Service 1: Mental Health -->
+                <section class="grid grid-cols-1 md:grid-cols-2 gap-y-8 md:gap-y-0 service-section-layout-1">
+                    <div
+                        class="image-wrapper w-full h-80 md:h-[450px] overflow-hidden flex items-center justify-center p-4 bg-gray-900 rounded-2xl relative">
+                        <img src="Images/mentalhealth.jpg" alt="Volunteers supporting mental health"
+                            class="w-full h-full object-cover clip-target-shape transition-transform duration-500 ease-in-out hover:scale-110">
+                        <div class="absolute inset-0 border-2 border-white/10 clip-target-shape pointer-events-none">
+                        </div>
+                    </div>
+                    <div class="text-card p-10 lg:p-12 rounded-2xl shadow-xl border">
+                        <h2 class="flex items-center gap-3 text-3xl lg:text-4xl font-bold text-brand">
+                            <i class="fa-solid fa-brain fa-fw"></i>
+                            Mental Health
+                        </h2>
+                        <p class="mt-5 text-lg text-gray-300 leading-loose">
+                            Provide support for initiatives focused on mental wellness, resilience, and stress
+                            reduction. Our projects include peer support groups, mindfulness workshops, and partnerships
+                            with local
+                            counseling services.
+                        </p>
+                        <a href="#"
+                            class="donate group inline-flex items-center mt-8 px-6 py-3 rounded-lg text-base font-semibold transform hover:-translate-y-1">
+                            Find Projects
+                            <i
+                                class="fa-solid fa-arrow-right ml-2 transition-transform duration-300 group-hover:translate-x-1"></i>
+                        </a>
+                    </div>
+                </section>
+
+                <!-- Service 2: Public Health -->
+                <section class="grid grid-cols-1 md:grid-cols-2 gap-y-8 md:gap-y-0 service-section-layout-2">
+                    <div
+                        class="image-wrapper w-full h-80 md:h-[450px] overflow-hidden flex items-center justify-center p-4 bg-gray-900 rounded-2xl relative md:order-last">
+                        <img src="Images/services2.jpg" alt="Volunteers at a health clinic"
+                            class="w-full h-full object-cover clip-target-shape-reverse transition-transform duration-500 ease-in-out hover:scale-110">
+                        <div
+                            class="absolute inset-0 border-2 border-white/10 clip-target-shape-reverse pointer-events-none">
+                        </div>
+                    </div>
+                    <div class="text-card p-10 lg:p-12 rounded-2xl shadow-xl border md:order-first">
+                        <h2 class="flex items-center gap-3 text-3xl lg:text-4xl font-bold text-brand">
+                            <i class="fa-solid fa-briefcase-medical fa-fw"></i>
+                            Public Health
+                        </h2>
+                        <p class="mt-5 text-lg text-gray-300 leading-loose">
+                            Engage in projects that promote community health, from organizing blood drives and
+                            vaccination clinics to distributing health information. You'll work alongside health
+                            professionals to
+                            address public health challenges.
+                        </p>
+                        <a href="#"
+                            class="donate group inline-flex items-center mt-8 px-6 py-3 rounded-lg text-base font-semibold transform hover:-translate-y-1">
+                            Find Projects
+                            <i
+                                class="fa-solid fa-arrow-right ml-2 transition-transform duration-300 group-hover:translate-x-1"></i>
+                        </a>
+                    </div>
+                </section>
+
+                <!-- Service 3: Community Aid -->
+                <section class="grid grid-cols-1 md:grid-cols-2 gap-y-8 md:gap-y-0 service-section-layout-1">
+                    <div
+                        class="image-wrapper w-full h-80 md:h-[450px] overflow-hidden flex items-center justify-center p-4 bg-gray-900 rounded-2xl relative">
+                        <img src="Images/services3.jpg" alt="Volunteers at a food bank"
+                            class="w-full h-full object-cover clip-target-shape transition-transform duration-500 ease-in-out hover:scale-110">
+                        <div class="absolute inset-0 border-2 border-white/10 clip-target-shape pointer-events-none">
+                        </div>
+                    </div>
+                    <div class="text-card p-10 lg:p-12 rounded-2xl shadow-xl border">
+                        <h2 class="flex items-center gap-3 text-3xl lg:text-4xl font-bold text-brand">
+                            <i class="fa-solid fa-handshake-angle fa-fw"></i>
+                            Community Aid
+                        </h2>
+                        <p class="mt-5 text-lg text-gray-300 leading-loose">
+                            Support vulnerable populations by volunteering at food banks, homeless shelters, and
+                            community centers. These projects provide immediate and direct assistance to those in need,
+                            fostering a
+                            stronger, more supportive community.
+                        </p>
+                        <a href="#"
+                            class="donate group inline-flex items-center mt-8 px-6 py-3 rounded-lg text-base font-semibold transform hover:-translate-y-1">
+                            Find Projects
+                            <i
+                                class="fa-solid fa-arrow-right ml-2 transition-transform duration-300 group-hover:translate-x-1"></i>
+                        </a>
+                    </div>
+                </section>
+
+                <!-- Service 4: Disability Support -->
+                <section class="grid grid-cols-1 md:grid-cols-2 gap-y-8 md:gap-y-0 service-section-layout-2">
+                    <div
+                        class="image-wrapper w-full h-80 md:h-[450px] overflow-hidden flex items-center justify-center p-4 bg-gray-900 rounded-2xl relative md:order-last">
+                        <img src="Images/services4.jpg" alt="Accessible sports event"
+                            class="w-full h-full object-cover clip-target-shape-reverse transition-transform duration-500 ease-in-out hover:scale-110">
+                        <div
+                            class="absolute inset-0 border-2 border-white/10 clip-target-shape-reverse pointer-events-none">
+                        </div>
+                    </div>
+                    <div class="text-card p-10 lg:p-12 rounded-2xl shadow-xl border md:order-first">
+                        <h2 class="flex items-center gap-3 text-3xl lg:text-4xl font-bold text-brand">
+                            <i class="fa-solid fa-wheelchair fa-fw"></i>
+                            Disability Support
+                        </h2>
+                        <p class="mt-5 text-lg text-gray-300 leading-loose">
+                            Champion inclusivity by assisting with programs for individuals with disabilities. This
+                            includes accessible sports events, skill-building workshops, and buddy programs, creating an
+                            equitable environment where everyone can thrive.
+                        </p>
+                        <a href="#"
+                            class="donate group inline-flex items-center mt-8 px-6 py-3 rounded-lg text-base font-semibold transform hover:-translate-y-1">
+                            Find Projects
+                            <i
+                                class="fa-solid fa-arrow-right ml-2 transition-transform duration-300 group-hover:translate-x-1"></i>
+                        </a>
+                    </div>
+                </section>
+
+                <!-- Service 5: Environment -->
+                <section class="grid grid-cols-1 md:grid-cols-2 gap-y-8 md:gap-y-0 service-section-layout-1">
+                    <div
+                        class="image-wrapper w-full h-80 md:h-[450px] overflow-hidden flex items-center justify-center p-4 bg-gray-900 rounded-2xl relative">
+                        <img src="Images/services5.jpg" alt="Volunteers planting trees"
+                            class="w-full h-full object-cover clip-target-shape transition-transform duration-500 ease-in-out hover:scale-110">
+                        <div class="absolute inset-0 border-2 border-white/10 clip-target-shape pointer-events-none">
+                        </div>
+                    </div>
+                    <div class="text-card p-10 lg:p-12 rounded-2xl shadow-xl border">
+                        <h2 class="flex items-center gap-3 text-3xl lg:text-4xl font-bold text-brand">
+                            <i class="fa-solid fa-leaf fa-fw"></i>
+                            Environmental
+                        </h2>
+                        <p class="mt-5 text-lg text-gray-300 leading-loose">
+                            Join our green initiatives to protect and preserve our natural environment. Participate in
+                            local park clean-ups, tree planting drives, community gardening, and recycling programs.
+                            Help us build a
+                            sustainable future.
+                        </p>
+                        <a href="#"
+                            class="donate group inline-flex items-center mt-8 px-6 py-3 rounded-lg text-base font-semibold transform hover:-translate-y-1">
+                            Find Projects
+                            <i
+                                class="fa-solid fa-arrow-right ml-2 transition-transform duration-300 group-hover:translate-x-1"></i>
+                        </a>
+                    </div>
+                </section>
+
+                <!-- Service 6: Youth & Education -->
+                <section class="grid grid-cols-1 md:grid-cols-2 gap-y-8 md:gap-y-0 service-section-layout-2">
+                    <div
+                        class="image-wrapper w-full h-80 md:h-[450px] overflow-hidden flex items-center justify-center p-4 bg-gray-900 rounded-2xl relative md:order-last">
+                        <img src="Images/services6.jpg" alt="Tutor mentoring a student"
+                            class="w-full h-full object-cover clip-target-shape-reverse transition-transform duration-500 ease-in-out hover:scale-110">
+                        <div
+                            class="absolute inset-0 border-2 border-white/10 clip-target-shape-reverse pointer-events-none">
+                        </div>
+                    </div>
+                    <div class="text-card p-10 lg:p-12 rounded-2xl shadow-xl border md:order-first">
+                        <h2 class="flex items-center gap-3 text-3xl lg:text-4xl font-bold text-brand">
+                            <i class="fa-solid fa-graduation-cap fa-fw"></i>
+                            Youth & Education
+                        </h2>
+                        <p class="mt-5 text-lg text-gray-300 leading-loose">
+                            Make a lasting impact by mentoring and tutoring local youth. Our education projects partner
+                            with schools and after-school programs to provide academic support, literacy help, and STEM
+                            workshops, empowering the next generation.
+                        </p>
+                        <a href="#"
+                            class="donate group inline-flex items-center mt-8 px-6 py-3 rounded-lg text-base font-semibold transform hover:-translate-y-1">
+                            Find Projects
+                            <i
+                                class="fa-solid fa-arrow-right ml-2 transition-transform duration-300 group-hover:translate-x-1"></i>
+                        </a>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-logo">
+            <img src="Images/LOGO.png" alt="LIHE Sydney Logo">
+            <h3>LINCOLN STUDENTS COMMUNITY</h3>
+        </div>
+        <p class="footer-copyright">© 2025 Lincoln Institute of Higher Education. All Rights Reserved.</p>
+        <div class="social">
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="Whatsapp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+    </footer>
+
+    <!-- === JAVASCRIPT === -->
+    <script>
+        const menuButton = document.getElementById('mobile-menu-button');
+        const mainNav = document.getElementById('main-nav');
+
+        menuButton.addEventListener('click', () => {
+            menuButton.classList.toggle('active');
+            mainNav.classList.toggle('active');
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agency Company – Travel & Education Services</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --white: #ffffff;
+            --blue: #0057b8;
+            --blue-dark: #003d82;
+            --yellow: #ffcc00;
+            --yellow-light: #ffd633;
+            --text-dark: #2c3e50;
+            --text-light: #6c757d;
+            --bg-light: #f8f9fa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--white);
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* NAVIGATION */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            animation: slideDown 0.5s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--blue);
+        }
+
+        .logo span {
+            color: var(--yellow);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--yellow);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--blue);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* HERO */
+        .hero {
+            background: linear-gradient(135deg, rgba(0, 87, 184, 0.8), rgba(0, 61, 130, 0.9)),
+                url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e') center/cover no-repeat fixed;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(255, 204, 0, 0.1), transparent 50%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 0.5;
+            }
+            50% {
+                opacity: 0.8;
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero h1 span {
+            color: var(--yellow);
+            display: inline-block;
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                text-shadow: 0 0 20px rgba(255, 204, 0, 0.5);
+            }
+            50% {
+                text-shadow: 0 0 30px rgba(255, 204, 0, 0.8);
+            }
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: var(--yellow);
+            color: var(--blue);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(255, 204, 0, 0.3);
+            animation: fadeInUp 1s ease 0.3s backwards;
+        }
+
+        .cta-button:hover {
+            background: var(--yellow-light);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 204, 0, 0.5);
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 50px;
+            max-width: 1200px;
+            margin: auto;
+            position: relative;
+        }
+
+        section:nth-child(even) {
+            background: var(--bg-light);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 15px;
+            color: var(--blue);
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--yellow);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 1.1rem;
+            margin-bottom: 60px;
+            font-weight: 300;
+        }
+
+        .services-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 0;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 1;
+        }
+
+        .service-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0, 87, 184, 0.2);
+        }
+
+        .service-card:hover::before {
+            opacity: 0.9;
+        }
+
+        .service-card-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .service-card:hover .service-card-img {
+            transform: scale(1.1);
+        }
+
+        .service-card-content {
+            padding: 30px;
+            position: relative;
+            z-index: 2;
+            transition: color 0.4s ease;
+        }
+
+        .service-card:hover .service-card-content {
+            color: var(--white);
+        }
+
+        .service-card h3 {
+            margin-bottom: 15px;
+            color: var(--blue);
+            font-size: 1.5rem;
+            font-weight: 600;
+            transition: color 0.4s ease;
+        }
+
+        .service-card:hover h3 {
+            color: var(--yellow);
+        }
+
+        .service-card p {
+            line-height: 1.7;
+            color: var(--text-light);
+            transition: color 0.4s ease;
+        }
+
+        .service-card:hover p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--yellow), var(--yellow-light));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            transition: all 0.4s ease;
+        }
+
+        .service-card:hover .service-icon {
+            background: var(--white);
+            transform: rotate(360deg);
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+            color: var(--white);
+            padding: 80px 50px;
+            text-align: center;
+        }
+
+        .stats-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            max-width: 1000px;
+            margin: 50px auto 0;
+        }
+
+        .stat-item {
+            padding: 20px;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--yellow);
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            font-weight: 300;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: var(--white);
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        footer p {
+            margin: 10px 0;
+            font-weight: 300;
+        }
+
+        footer span {
+            color: var(--yellow);
+            font-weight: 600;
+        }
+
+        .footer-links {
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--yellow);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 15px 20px;
+            }
+
+            .nav-links {
+                gap: 15px;
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            section {
+                padding: 60px 20px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .services-wrapper {
+                gap: 30px;
+            }
+
+            .stats-wrapper {
+                gap: 30px;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* Scroll Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="logo">Agency<span>Co</span></div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#travel">Travel</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Explore the World & Build Your <span>Future</span></h1>
+            <p>Your trusted agency for unforgettable travel experiences and global study opportunities that transform lives.</p>
+            <a href="#travel" class="cta-button">Get Started</a>
+        </div>
+    </section>
+
+    <!-- STATS SECTION -->
+    <div class="stats-section">
+        <h2 class="section-title" style="color: var(--white);">Our Impact</h2>
+        <p class="section-subtitle" style="color: rgba(255, 255, 255, 0.8);">Numbers that speak for themselves</p>
+        <div class="stats-wrapper">
+            <div class="stat-item fade-in">
+                <div class="stat-number">5000+</div>
+                <div class="stat-label">Happy Travelers</div>
+            </div>
+            <div class="stat-item fade-in">
+                <div class="stat-number">50+</div>
+                <div class="stat-label">Countries Covered</div>
+            </div>
+            <div class="stat-item fade-in">
+                <div class="stat-number">2000+</div>
+                <div class="stat-label">Students Placed</div>
+            </div>
+            <div class="stat-item fade-in">
+                <div class="stat-number">98%</div>
+                <div class="stat-label">Success Rate</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TRAVELLING SECTION -->
+    <section id="travel">
+        <h2 class="section-title">Travelling Services</h2>
+        <p class="section-subtitle">Discover the world with our premium travel solutions</p>
+        <div class="services-wrapper">
+
+            <div class="service-card fade-in">
+                <img class="service-card-img" src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1" alt="Travel Package">
+                <div class="service-card-content">
+                    <div class="service-icon">✈️</div>
+                    <h3>International Tours</h3>
+                    <p>Premium travel packages designed for comfort, adventure, and unforgettable experiences across the globe.</p>
+                </div>
+            </div>
+
+            <div class="service-card fade-in">
+                <img class="service-card-img" src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff" alt="Visa Services">
+                <div class="service-card-content">
+                    <div class="service-icon">📋</div>
+                    <h3>Visa Assistance</h3>
+                    <p>Professional visa support for tourists, students, and business travelers with 98% approval rate.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- EDUCATION SECTION -->
+    <section id="education">
+        <h2 class="section-title">Educational Services</h2>
+        <p class="section-subtitle">Shape your future with world-class education opportunities</p>
+        <div class="services-wrapper">
+
+            <div class="service-card fade-in">
+                <img class="service-card-img" src="https://images.unsplash.com/photo-1492538368677-f6e0afe31dcc" alt="Study Abroad">
+                <div class="service-card-content">
+                    <div class="service-icon">🎓</div>
+                    <h3>Study Abroad</h3>
+                    <p>We guide students to top universities worldwide with complete application support and scholarship assistance.</p>
+                </div>
+            </div>
+
+            <div class="service-card fade-in">
+                <img class="service-card-img" src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1" alt="Career Guidance">
+                <div class="service-card-content">
+                    <div class="service-icon">💼</div>
+                    <h3>Career Consultation</h3>
+                    <p>Get expert advice to choose the right academic path based on your strengths and career aspirations.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contact">
+        <p>&copy; 2025 <span>Agency Company</span>. All Rights Reserved.</p>
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Contact Us</a>
+        </div>
+        <p>Travel & Education Services | Making Dreams Come True</p>
+    </footer>
+
+    <script>
+        // Scroll Animation
+        const fadeElements = document.querySelectorAll('.fade-in');
+
+        const appearOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -100px 0px"
+        };
+
+        const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    return;
+                } else {
+                    entry.target.classList.add('visible');
+                    appearOnScroll.unobserve(entry.target);
+                }
+            });
+        }, appearOptions);
+
+        fadeElements.forEach(element => {
+            appearOnScroll.observe(element);
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
