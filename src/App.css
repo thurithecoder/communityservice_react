@@ -70,7 +70,6 @@ h6 {
   position: absolute;
   left: 0;
   bottom: -39px;
-  /* Slightly adjusted to prevent gap */
   width: 100%;
   height: 40px;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 40' preserveAspectRatio='none'%3E%3Cpath fill='%23ffffff' fill-opacity='0.95' d='M0,32L48,32C96,32,192,32,288,26.7C384,21.3,480,10.7,576,10.7C672,10.7,768,21.3,864,24C960,26.7,1056,21.3,1152,18.7C1248,16,1344,16,1392,16L1440,16L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z'%3E%3C/path%3E%3C/svg%3E");
@@ -199,563 +198,328 @@ nav ul li a.active::after {
   transform: translateY(-2px);
 }
 
-/* === HERO SECTION === */
+/* =========================================
+   HERO SECTION (Standard Desktop)
+   ========================================= */
 .hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* On large screens, center content vertically in the viewport */
   justify-content: center;
-  background: #000000;
-  padding: 0 8%;
-  min-height: 100vh;
-  position: relative;
-  text-align: center;
+  background-color: #000;
+  padding: 120px 20px 40px;
   overflow: hidden;
-  width: 100%;
-  margin-top: -40px;
-  padding-top: 100px;
+  text-align: center;
 }
 
-/* Background Elements */
-.hero::before,
-.hero::after,
+/* Corner Backgrounds */
+.hero-bg-top-left,
+.hero-bg-top-right,
 .hero-bg-bottom-left,
 .hero-bg-bottom-right {
-  content: '';
   position: absolute;
-  width: 800px;
-  height: 800px;
-  background-size: contain;
-  z-index: 0;
-  pointer-events: none;
-  /* REDUCED OPACITY GLOBALLY */
-  opacity: 0.5;
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-.hero::before {
-  top: 0;
-  left: 0;
-  background-image: url('/bg/1.svg');
-  background-repeat: no-repeat;
-}
-
-.hero::after {
-  top: 0;
-  right: 0;
-  background-image: url('/bg/2.svg');
-  background-repeat: no-repeat;
-  background-position: top right;
-}
-
-.hero-bg-bottom-left {
-  bottom: 0;
-  left: 0;
-  background: url('/bg/3.svg') no-repeat bottom left;
-}
-
-.hero-bg-bottom-right {
-  bottom: 0;
-  right: 0;
-  background: url('/bg/4.svg') no-repeat bottom right;
-}
-
-.hero-bg-map {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 85%;
-  max-width: 1100px;
-  z-index: 0;
-  opacity: 0.6;
-  pointer-events: none;
-  transition: all 0.6s ease-out;
-}
-
-/* Content Styling (Desktop Default) */
-.hero-content {
-  z-index: 2;
-  position: relative;
-  max-width: 1200px;
-  margin: 0 auto;
-  /* Reserve space for the absolute image below on large screens */
-  padding-bottom: 380px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: all 0.3s ease;
-}
-
-.hero-content h1 {
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  line-height: 1.2;
-  margin-bottom: 20px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.hero-content h1 .red-title {
-  color: var(--primary-red);
-  display: inline-block;
-}
-
-.subtitle {
-  background: rgba(255, 0, 0, 0.15);
-  border: 1px solid var(--light-red);
-  color: white;
-  padding: 10px 24px;
-  display: inline-block;
-  font-size: 1.1rem;
-  text-transform: uppercase;
-  font-weight: 600;
-  letter-spacing: 1px;
-  border-radius: 4px;
-  max-width: 800px;
-}
-
-/* Image Styling (Desktop Default - Absolute positioning) */
-.hero-overlay-img {
-  position: absolute;
-  bottom: -20px;
-  /* Tucked slightly off screen bottom */
-  left: 50%;
-  transform: translateX(-50%);
-  width: auto;
-  /* Maintain SVG ratio */
-  height: auto;
-  /* Maintain SVG ratio */
-  max-width: 90%;
-  /* Prevent overflowing horizontally */
-  max-height: 45vh;
-  /* Limit height on landscape desktops */
-  z-index: 1;
-  pointer-events: none;
-  transition: all 0.3s ease;
-}
-
-/* Side Content (Desktop Default - Absolute positioning) */
-.left-content,
-.right-content {
-  position: absolute;
-  z-index: 10;
-  bottom: 50px;
-}
-
-.left-content {
-  left: 10%;
-  width: 300px;
-  text-align: left;
-}
-
-.right-content {
-  right: 5%;
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.social-icons {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.social-icons a {
-  color: white;
-  font-size: 1.3rem;
-  transition: 0.3s;
-}
-
-.social-icons a:hover {
-  color: var(--primary-red);
-  transform: translateY(-3px);
-}
-
-/* === MEDIA QUERIES FOR RESPONSIVENESS === */
-
-/* Large Tablets & Small Laptops (Intermediate Step) */
-@media (max-width: 1200px) {
-  .hero-content {
-    padding-bottom: 320px;
-  }
-
-  .hero-overlay-img {
-    max-height: 40vh;
-  }
-
-  .left-content {
-    left: 5%;
-  }
-
-  .right-content {
-    right: 2%;
-  }
-}
-
-/* === THE BIG SHIFT: Tablets & Mobile (< 991px) === */
-/* Switch from absolute positioning to a stacked flex layout */
-@media (max-width: 991px) {
-  .navbar {
-    padding: 12px 5%;
-  }
-
-  .menu-toggle {
-    display: flex;
-  }
-
-  .nav-buttons {
-    display: none;
-  }
-
-  /* Navbar Mobile Menu Logic */
-  nav {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background: white;
-    max-height: 0;
-    overflow: hidden;
-    transition: 0.3s ease-in-out;
-    flex-direction: column;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  }
-
-  nav.active {
-    max-height: 400px;
-    padding: 20px 0;
-  }
-
-  nav ul {
-    flex-direction: column;
-    width: 100%;
-    gap: 0;
-  }
-
-  nav ul li {
-    width: 100%;
-    text-align: center;
-  }
-
-  nav ul li a {
-    display: block;
-    padding: 15px;
-    color: #111;
-  }
-
-  /* 1. Hero Container - Switch to natural top-to-bottom flow */
-  .hero {
-    padding-top: 120px;
-    justify-content: flex-start;
-    /* Start from top */
-    height: auto;
-    /* Allow growth */
-    min-height: 100vh;
-    padding-bottom: 40px;
-  }
-
-  /* 2. Text Content - Remove padding reserved for absolute image */
-  .hero-content {
-    padding-bottom: 0;
-    margin-bottom: 30px;
-    /* Add gap between text and image below */
-  }
-
-  .hero-content h1 {
-    font-size: 2.8rem;
-  }
-
-  /* 3. The Image - RESTORED and STACKED */
-  .hero-overlay-img {
-    position: relative;
-    /* No longer absolute */
-    bottom: auto;
-    left: auto;
-    transform: none;
-    /* Ensure proportional scaling (SVG ratio) */
-    width: 90%;
-    max-width: 500px;
-    height: auto;
-    margin-bottom: 40px;
-    /* Push side content down */
-    max-height: none;
-    /* Remove desktop height restriction */
-  }
-
-  /* 4. Side Content - Stack naturally below image */
-  .left-content {
-    position: relative;
-    /* No longer absolute */
-    width: 100%;
-    left: auto;
-    bottom: auto;
-    text-align: center;
-    margin: 20px auto;
-    max-width: 500px;
-    z-index: 5;
-  }
-
-  .right-content {
-    position: relative;
-    /* No longer absolute */
-    right: auto;
-    top: auto;
-    transform: none;
-    flex-direction: row;
-    justify-content: center;
-    margin-bottom: 20px;
-    z-index: 5;
-  }
-
-  .social-icons {
-    flex-direction: row;
-  }
-
-  /* Make background elements subtler so stacked content pops */
-  .hero::before,
-  .hero::after,
-  .hero-bg-bottom-left,
-  .hero-bg-bottom-right {
-    opacity: 0.5;
-  }
-}
-
-/* Phones (Portrait) - Fine tuning sizes */
-@media (max-width: 600px) {
-  .hero {
-    padding-top: 100px;
-  }
-
-  .hero-content h1 {
-    font-size: 2rem;
-    letter-spacing: 1px;
-  }
-
-  .subtitle {
-    font-size: 0.9rem;
-    padding: 8px 16px;
-  }
-
-  /* Ensure image looks good on very small screens */
-  .hero-overlay-img {
-    width: 100%;
-    max-width: 380px;
-  }
-}
-
-/* === HERO SECTION === */
-.hero {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  /* On large screens, center content vertically in the viewport */
-  justify-content: center;
-  background: #000000;
-  padding: 0 8%;
-  min-height: 100vh;
-  position: relative;
-  text-align: center;
-  overflow: hidden;
-  width: 100%;
-  margin-top: -40px;
-  padding-top: 80px;
-}
-
-/* Background Elements */
-.hero::before,
-.hero::after,
-.hero-bg-bottom-left,
-.hero-bg-bottom-right {
-  content: '';
-  position: absolute;
-  /* Use vw so background elements scale with screen width */
   width: 45vw;
   height: 45vw;
   max-width: 800px;
   max-height: 800px;
   background-size: contain;
-  z-index: 0;
+  background-repeat: no-repeat;
+  opacity: 0.35;
   pointer-events: none;
-  /* Kept reduced opacity as requested previously */
-  opacity: 0.5;
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  z-index: 0;
+  transition: opacity 0.3s ease;
 }
 
-.hero::before {
+.hero-bg-top-left {
   top: 0;
   left: 0;
   background-image: url('/bg/1.svg');
-  background-repeat: no-repeat;
+  background-position: top left;
 }
 
-.hero::after {
+.hero-bg-top-right {
   top: 0;
   right: 0;
   background-image: url('/bg/2.svg');
-  background-repeat: no-repeat;
   background-position: top right;
 }
 
 .hero-bg-bottom-left {
   bottom: 0;
   left: 0;
-  background: url('/bg/3.svg') no-repeat bottom left;
+  background-image: url('/bg/3.svg');
+  background-position: bottom left;
 }
 
 .hero-bg-bottom-right {
   bottom: 0;
   right: 0;
-  background: url('/bg/4.svg') no-repeat bottom right;
+  background-image: url('/bg/4.svg');
+  background-position: bottom right;
 }
 
+/* Map Overlay */
 .hero-bg-map {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 85%;
-  max-width: 1100px;
+  width: 90%;
+  max-width: 1000px;
+  opacity: 0.2;
   z-index: 0;
-  opacity: 0.6;
   pointer-events: none;
-  transition: all 0.6s ease-out;
 }
 
-/* Content Styling (Desktop Default) */
+/* Hero Content */
 .hero-content {
-  z-index: 2;
   position: relative;
-  max-width: 1200px;
+  z-index: 10;
+  max-width: 1000px;
   margin: 0 auto;
-  /* Reserve dynamic space based on viewport height for the larger image */
-  padding-bottom: 55vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  margin-bottom: 35vh;
   transition: all 0.3s ease;
 }
 
 .hero-content h1 {
-  /* Fluid scaling for main title */
-  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-size: clamp(2rem, 5vw, 4rem);
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  line-height: 1.1;
+  line-height: 1.2;
   margin-bottom: 20px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  text-transform: uppercase;
 }
 
-.hero-content h1 .red-title {
+.hero-content .red-title {
   color: var(--primary-red);
-  display: inline-block;
 }
 
 .subtitle {
-  background: rgba(255, 0, 0, 0.15);
-  border: 1px solid var(--light-red);
-  color: white;
-  padding: 10px 24px;
   display: inline-block;
-  /* Fluid scaling for subtitle */
-  font-size: clamp(0.9rem, 1.5vw, 1.2rem);
-  text-transform: uppercase;
-  font-weight: 600;
-  letter-spacing: 1px;
+  background: rgba(255, 0, 0, 0.1);
+  border: 1px solid var(--primary-red);
+  padding: 10px 20px;
   border-radius: 4px;
-  max-width: 800px;
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  letter-spacing: 1px;
 }
 
-/* Image Styling (Desktop Default - Absolute positioning) */
+/* Overlay Image */
 .hero-overlay-img {
   position: absolute;
-  bottom: -5vh;
-  /* Anchor near bottom */
+  bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: auto;
+  max-width: 90%;
   height: auto;
-  max-width: 95%;
-  /* Increased height limit for "zoomed out" bigger effect on large screens */
-  max-height: 65vh;
-  z-index: 1;
+  max-height: 55vh;
+  z-index: 5;
   pointer-events: none;
-  transition: all 0.3s ease;
 }
 
-/* Side Content (Desktop Default - Absolute positioning) */
+/* Side Contents */
 .left-content,
 .right-content {
   position: absolute;
-  z-index: 10;
-  bottom: 8vh;
-  /* Responsive bottom spacing */
+  bottom: 60px;
+  z-index: 20;
 }
 
 .left-content {
-  left: 8%;
-  width: 300px;
+  left: 5%;
+  width: 280px;
   text-align: left;
-}
-
-/* Fluid scaling for side text */
-.left-content p {
-  font-size: clamp(0.9rem, 1.1vw, 1rem);
 }
 
 .right-content {
   right: 5%;
-  top: 55%;
-  transform: translateY(-50%);
   display: flex;
   flex-direction: column;
   gap: 20px;
+  align-items: center;
 }
 
 .social-icons {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 15px;
 }
 
 .social-icons a {
+  font-size: 1.4rem;
   color: white;
-  font-size: 1.3rem;
   transition: 0.3s;
 }
 
 .social-icons a:hover {
   color: var(--primary-red);
-  transform: translateY(-3px);
 }
 
+.read-more {
+  color: var(--primary-red);
+  font-weight: bold;
+  text-transform: uppercase;
+  border-bottom: 2px solid var(--primary-red);
+}
 
-/* === MEDIA QUERIES FOR RESPONSIVENESS === */
+/* =========================================
+   RESPONSIVE FIX (Max-Width: 900px)
+   ========================================= */
+@media (max-width: 900px) {
 
-/* Intermediate breakpoint for readjusting absolute elements */
-@media (max-width: 1400px) {
+  /* 1. HERO CONTAINER: Lift content to the top */
+  .hero {
+    /* KEY CHANGE: Use flex-start to align items to the top, not center */
+    justify-content: flex-start !important;
+
+    /* KEY CHANGE: Reduced padding-top to remove space under the wave/nav */
+    /* Adjust this number (e.g., 30px, 40px) if the text hits the wave */
+    padding-top: 30px !important;
+
+    padding-bottom: 40px !important;
+
+    /* Background settings */
+    background-image: url('/bg/bgbuildings.svg') !important;
+    background-repeat: no-repeat !important;
+    background-position: bottom center !important;
+    background-size: 100% auto !important;
+
+    /* Allow height to be dynamic so it doesn't force huge gaps on tall phones */
+    height: auto !important;
+    min-height: 85vh !important;
+  }
+
+  /* 2. Hide specific overlay images */
+  img.hero-overlay-img[src*="overlay_nobg"],
+  .overlay.nobg,
+  .overlay-nobg,
+  .hero-bg-map {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+
+  /* 3. Corner backgrounds */
+  .hero-bg-top-left,
+  .hero-bg-top-right,
+  .hero-bg-bottom-left,
+  .hero-bg-bottom-right {
+    width: clamp(140px, 18vw, 380px) !important;
+    height: clamp(140px, 18vw, 380px) !important;
+    opacity: 0.32 !important;
+  }
+
+  .hero-bg-top-left {
+    top: 6vh;
+    left: -10vw;
+  }
+
+  .hero-bg-top-right {
+    top: 6vh;
+    right: -10vw;
+  }
+
+  .hero-bg-bottom-left {
+    bottom: -8vw;
+    left: -8vw;
+  }
+
+  .hero-bg-bottom-right {
+    bottom: -8vw;
+    right: -8vw;
+  }
+
+  /* 4. HERO CONTENT: Positioning */
   .hero-content {
-    padding-bottom: 50vh;
+    /* Reduced margin bottom */
+    margin-bottom: 1.5rem !important;
+    padding: 0 3.5vw !important;
+    max-width: 92% !important;
+
+    /* Ensure no extra top margin is pushing it down */
+    margin-top: 10px !important;
+  }
+
+  .hero-content h1 {
+    font-size: clamp(2rem, 5.5vw, 3.5rem) !important;
+    line-height: 1.15 !important;
   }
 
   .hero-overlay-img {
-    max-height: 55vh;
-  }
-}
-
-/* === TABLET & MOBILE (< 991px) === */
-/* Switch layout: Hide image, stack content naturally */
-@media (max-width: 991px) {
-  .navbar {
-    padding: 12px 5%;
+    max-width: 60vw !important;
+    max-height: 50vh !important;
+    height: auto !important;
   }
 
+  /* 5. SIDE CONTENT: Stacked Layout */
+  .left-content {
+    position: relative !important;
+    width: clamp(280px, 90vw, 720px) !important;
+
+    /* Reset Position */
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+
+    text-align: center !important;
+    margin: 0 auto 1.5rem auto !important;
+    z-index: 30 !important;
+    padding: 0 1.5rem !important;
+  }
+
+  .right-content {
+    position: relative !important;
+    width: 100% !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    text-align: center !important;
+    margin: 0 auto !important;
+    z-index: 30 !important;
+  }
+
+  /* Social icons horizontal layout */
+  .social-icons {
+    position: relative !important;
+    flex-direction: row !important;
+    gap: 20px !important;
+    justify-content: center !important;
+    margin-top: 0 !important;
+  }
+
+  .social-icons a {
+    font-size: 1.5rem !important;
+  }
+
+  /* 6. Site-wide paddings */
+  .about,
+  .events,
+  .contact,
+  .services-hero,
+  .about-hero,
+  .footer {
+    padding-left: min(6vw, 40px) !important;
+    padding-right: min(6vw, 40px) !important;
+    padding-top: 6vh !important;
+    padding-bottom: 6vh !important;
+  }
+
+  .mvv-card,
+  .event-card,
+  .text-card,
+  .contact-form-container {
+    padding: calc(2.5vw + 12px) !important;
+  }
+
+  .gallery-item,
+  .team-img {
+    width: clamp(180px, 46vw, 420px) !important;
+    height: auto !important;
+  }
+
+  /* Navbar Mobile Logic */
   .menu-toggle {
     display: flex;
   }
@@ -764,7 +528,6 @@ nav ul li a.active::after {
     display: none;
   }
 
-  /* Navbar Mobile Menu Logic */
   nav {
     position: absolute;
     top: 100%;
@@ -773,7 +536,7 @@ nav ul li a.active::after {
     background: white;
     max-height: 0;
     overflow: hidden;
-    transition: 0.3s ease-in-out;
+    transition: 0.3s;
     flex-direction: column;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   }
@@ -798,85 +561,6 @@ nav ul li a.active::after {
     display: block;
     padding: 15px;
     color: #111;
-  }
-
-  /* 1. Hero Container adjustments */
-  .hero {
-    padding-top: 140px;
-    justify-content: center;
-    height: auto;
-    min-height: 80vh;
-    padding-bottom: 80px;
-  }
-
-  /* 2. Remove extra padding since image is hidden */
-  .hero-content {
-    padding-bottom: 0;
-    margin-bottom: 40px;
-  }
-
-  /* 3. HIDE THE OVERLAY IMAGE on smaller screens */
-  .hero-overlay-img {
-    display: none;
-  }
-
-  /* 4. Stack side content naturally */
-  .left-content {
-    position: relative;
-    width: 100%;
-    left: auto;
-    bottom: auto;
-    text-align: center;
-    margin: 20px auto;
-    max-width: 500px;
-    z-index: 5;
-  }
-
-  .right-content {
-    position: relative;
-    right: auto;
-    top: auto;
-    transform: none;
-    flex-direction: row;
-    justify-content: center;
-    margin-bottom: 20px;
-    z-index: 5;
-  }
-
-  .social-icons {
-    flex-direction: row;
-  }
-
-  /* Reduce background element size further on tablets */
-  .hero::before,
-  .hero::after,
-  .hero-bg-bottom-left,
-  .hero-bg-bottom-right {
-    width: 40vw;
-    height: 40vw;
-    opacity: 0.4;
-  }
-}
-
-/* Phones (Portrait) */
-@media (max-width: 600px) {
-  .hero {
-    padding-top: 110px;
-  }
-
-  /* Clamp functions handle most font sizing, just fine-tuning margins */
-  .subtitle {
-    padding: 8px 16px;
-  }
-
-  /* Reduce background element size on phones */
-  .hero::before,
-  .hero::after,
-  .hero-bg-bottom-left,
-  .hero-bg-bottom-right {
-    width: 60vw;
-    height: 60vw;
-    opacity: 0.3;
   }
 }
 
@@ -942,7 +626,6 @@ nav ul li a.active::after {
   gap: 30px;
   overflow-x: auto;
   scroll-behavior: auto;
-  /* Handled by JS */
   padding-bottom: 20px;
   scrollbar-width: none;
 }
@@ -971,7 +654,7 @@ nav ul li a.active::after {
   z-index: 10;
 }
 
-/* === SERVICES & EVENTS (Shared Grid) === */
+/* === SERVICES & EVENTS === */
 .events {
   background: var(--bg-darker);
   padding: 80px 5%;
@@ -986,7 +669,6 @@ nav ul li a.active::after {
 
 .events h6 span,
 .section-title span {
-
   color: var(--primary-red);
 }
 
@@ -1189,313 +871,12 @@ nav ul li a.active::after {
   background: var(--dark-red);
 }
 
-/* === ABOUT PAGE (Refactored from embedded style) === */
+/* === ABOUT HERO === */
 .about-hero {
   background: linear-gradient(165deg, #1a0000 0%, #000000 100%);
   padding: 120px 8% 80px;
   text-align: center;
   margin-top: -40px;
-}
-
-.about-hero h1 {
-  font-size: clamp(2.2rem, 5vw, 3.5rem);
-  margin-bottom: 1rem;
-}
-
-.about-hero h1 span {
-  color: var(--primary-red);
-}
-
-.mvv-card {
-  background: #1a1a1a;
-  padding: 40px;
-  border-radius: 15px;
-  border: 1px solid #333;
-  text-align: center;
-  transition: 0.3s;
-  height: 100%;
-}
-
-.mvv-card:hover {
-  transform: translateY(-10px);
-  border-color: var(--primary-red);
-}
-
-.mvv-icon {
-  font-size: 3rem;
-  color: var(--primary-red);
-  margin-bottom: 20px;
-}
-
-.stat-card {
-  text-align: center;
-  padding: 20px;
-}
-
-.stat-number {
-  font-size: 3rem;
-  font-weight: bold;
-  color: var(--primary-red);
-}
-
-.stat-label {
-  color: #888;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.team-card {
-  background: #1a1a1a;
-  border-radius: 15px;
-  overflow: hidden;
-  border: 1px solid #333;
-  text-align: center;
-}
-
-.team-img {
-  height: 250px;
-  background: linear-gradient(135deg, #333, #111);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 4rem;
-  color: #555;
-}
-
-.team-info {
-  padding: 25px;
-}
-
-.team-info h4 {
-  margin-bottom: 5px;
-}
-
-.team-info .role {
-  color: var(--primary-red);
-  margin-bottom: 15px;
-  font-size: 0.9rem;
-}
-
-.team-social {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin-top: 15px;
-}
-
-/* === FOOTER === */
-.footer {
-  background: var(--bg-dark);
-  text-align: center;
-  padding: 50px 8%;
-  border-top: 1px solid #222;
-  margin-top: 50px;
-}
-
-.footer-logo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 15px;
-  margin-bottom: 15px;
-}
-
-.footer-logo img {
-  height: 45px;
-}
-
-.footer-logo h3 {
-  font-size: 1rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.footer-copyright {
-  color: #888;
-  font-size: 0.9rem;
-  margin-bottom: 25px;
-}
-
-
-/* === UPDATED MEDIA QUERIES FOR RESPONSIVENESS === */
-
-@media (max-width: 1200px) {
-  .hero-content h1 {
-    font-size: 3rem;
-  }
-
-  .hero-content {
-    padding-bottom: 250px;
-  }
-
-  .hero-overlay-img {
-    max-width: 600px;
-  }
-}
-
-@media (max-width: 991px) {
-  .navbar {
-    padding: 12px 5%;
-  }
-
-  .menu-toggle {
-    display: flex;
-  }
-
-  .nav-buttons {
-    display: none;
-  }
-
-  /* Navbar Mobile Menu Logic */
-  nav {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background: white;
-    max-height: 0;
-    overflow: hidden;
-    transition: 0.3s ease-in-out;
-    flex-direction: column;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  }
-
-  nav.active {
-    max-height: 400px;
-    padding: 20px 0;
-  }
-
-  nav ul {
-    flex-direction: column;
-    width: 100%;
-    gap: 0;
-  }
-
-  nav ul li {
-    width: 100%;
-    text-align: center;
-  }
-
-  nav ul li a {
-    display: block;
-    padding: 15px;
-    color: #111;
-  }
-
-  /* Hero Adjustments */
-  .hero {
-    justify-content: flex-start;
-    padding-top: 120px;
-  }
-
-  .hero-content {
-    padding-bottom: 0;
-    margin-bottom: 40px;
-  }
-
-  .hero-content h1 {
-    font-size: 2.5rem;
-    margin-bottom: 15px;
-  }
-
-  .subtitle {
-    font-size: 0.9rem;
-    padding: 8px 16px;
-  }
-
-  /* Stack contents vertically */
-  .hero-overlay-img {
-    position: relative;
-    bottom: auto;
-    left: auto;
-    transform: none;
-    max-width: 450px;
-    margin: 20px auto;
-  }
-
-  .left-content {
-    position: relative;
-    width: 100%;
-    left: auto;
-    bottom: auto;
-    text-align: center;
-    margin-bottom: 30px;
-    padding: 0 20px;
-  }
-
-  .right-content {
-    position: relative;
-    right: auto;
-    top: auto;
-    transform: none;
-    flex-direction: row;
-    justify-content: center;
-    margin-bottom: 40px;
-  }
-
-  .social-icons {
-    flex-direction: row;
-  }
-}
-
-@media (max-width: 600px) {
-  .hero {
-    padding-top: 100px;
-    min-height: auto;
-  }
-
-  .hero-content h1 {
-    font-size: 2rem;
-    letter-spacing: 1px;
-  }
-
-  .subtitle {
-    font-size: 0.8rem;
-    max-width: 90%;
-  }
-
-  .hero-overlay-img {
-    max-width: 80%;
-  }
-
-  .contact h2,
-  .section-title {
-    font-size: 1.8rem;
-  }
-
-  .contact form {
-    padding: 25px 15px;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero-content h1 {
-    font-size: 1.6rem;
-  }
-
-  .hero-content h1 .red-title {
-    display: inline;
-  }
-
-  /* Keep inline on very small screens to save vertical space if possible */
-  .hero-overlay-img {
-    max-width: 280px;
-  }
-
-  .left-content p {
-    font-size: 0.9rem;
-  }
-}
-
-/* =========================================
-   ABOUT PAGE STYLES
-   ========================================= */
-
-/* Hero Section */
-.about-hero {
-  background: linear-gradient(165deg, #1a0000 0%, #000000 100%);
-  padding: 120px 8% 80px;
-  text-align: center;
   position: relative;
   overflow: hidden;
   min-height: 400px;
@@ -1553,20 +934,6 @@ nav ul li a.active::after {
   line-height: 1.6;
 }
 
-/* Common Section Styles */
-.section-title {
-  text-align: center;
-  font-size: clamp(2rem, 4vw, 2.5rem);
-  margin-bottom: 50px;
-  color: var(--text-white);
-  font-weight: 700;
-}
-
-.section-title span {
-  color: var(--primary-red);
-}
-
-/* Mission, Vision, Values (MVV) Section */
 .mvv-section {
   padding: 80px 8%;
   background: var(--bg-darker);
@@ -1590,7 +957,6 @@ nav ul li a.active::after {
   position: relative;
   overflow: hidden;
   flex: 1 1 300px;
-  /* Responsive flex basis */
   max-width: 400px;
 }
 
@@ -1633,7 +999,6 @@ nav ul li a.active::after {
   line-height: 1.6;
 }
 
-/* Stats Section */
 .stats-section {
   padding: 60px 8%;
   background: var(--bg-darker);
@@ -1667,7 +1032,6 @@ nav ul li a.active::after {
   letter-spacing: 1px;
 }
 
-/* Story Section */
 .story-section {
   padding: 100px 8%;
   background: radial-gradient(circle at top right, #2a0000, var(--bg-dark));
@@ -1715,13 +1079,11 @@ nav ul li a.active::after {
   border: 1px solid #333;
 }
 
-/* Team Section */
 .team-section {
   padding: 100px 8%;
   background: radial-gradient(circle at center, #150000, var(--bg-dark));
 }
 
-/* Team Grid using Bootstrap classes in JSX, ensuring card styling here */
 .team-card {
   background: var(--bg-card);
   border-radius: 15px;
@@ -1729,7 +1091,6 @@ nav ul li a.active::after {
   transition: all 0.3s ease;
   border: 1px solid var(--border-color);
   height: 100%;
-  /* Ensure equal height */
 }
 
 .team-card:hover {
@@ -1745,12 +1106,8 @@ nav ul li a.active::after {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.team-img i {
-  font-size: 5rem;
-  color: var(--primary-red);
-  opacity: 0.5;
+  font-size: 4rem;
+  color: #555;
 }
 
 .team-info {
@@ -1796,40 +1153,7 @@ nav ul li a.active::after {
   color: var(--primary-red);
 }
 
-/* About Page Media Queries */
-@media (max-width: 992px) {
-  .story-content {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .story-image {
-    width: 100%;
-    max-width: 600px;
-  }
-}
-
-@media (max-width: 768px) {
-  .about-hero {
-    padding: 80px 5%;
-  }
-
-  .mvv-section,
-  .stats-section,
-  .story-section,
-  .team-section {
-    padding: 60px 5%;
-  }
-
-  .mvv-card {
-    padding: 30px 20px;
-  }
-}
-
-/* =========================================
-   HOME PAGE CONTACT SECTION
-   ========================================= */
-
+/* === HOME CONTACT === */
 .contact {
   background: radial-gradient(circle at top, #1f1f1f, var(--bg-dark) 70%);
   text-align: center;
@@ -1857,7 +1181,6 @@ nav ul li a.active::after {
   font-size: 1.05rem;
 }
 
-/* Form Container */
 .contact form {
   max-width: 650px;
   margin: 0 auto;
@@ -1877,7 +1200,6 @@ nav ul li a.active::after {
   border-color: var(--primary-red);
 }
 
-/* Inputs & Textarea */
 .contact input,
 .contact textarea {
   width: 100%;
@@ -1909,7 +1231,6 @@ nav ul li a.active::after {
   min-height: 120px;
 }
 
-/* Submit Button */
 .contact button[type="submit"] {
   background: linear-gradient(135deg, var(--primary-red), var(--dark-red));
   color: white;
@@ -1936,17 +1257,35 @@ nav ul li a.active::after {
   transform: translateY(0);
 }
 
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-  .contact {
-    padding: 60px 5%;
-  }
+/* === FOOTER === */
+.footer {
+  background: var(--bg-dark);
+  text-align: center;
+  padding: 50px 8%;
+  border-top: 1px solid #222;
+  margin-top: 50px;
+}
 
-  .contact form {
-    padding: 30px 20px;
-  }
+.footer-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
 
-  .contact h2 {
-    font-size: 1.8rem;
-  }
+.footer-logo img {
+  height: 45px;
+}
+
+.footer-logo h3 {
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.footer-copyright {
+  color: #888;
+  font-size: 0.9rem;
+  margin-bottom: 25px;
 }

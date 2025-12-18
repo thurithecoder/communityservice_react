@@ -53,8 +53,10 @@ const Home = () => {
     <>
       {/* HERO SECTION */}
       <section className="hero" id="home">
-        {/* RESTORED BACKGROUND ELEMENTS */}
+        {/* RESTORED BACKGROUND ELEMENTS - Hidden on mobile */}
         <img src="/bg/au_map.svg" alt="Australia Map" className="hero-bg-map" />
+        <div className="hero-bg-top-left"></div>
+        <div className="hero-bg-top-right"></div>
         <div className="hero-bg-bottom-left"></div>
         <div className="hero-bg-bottom-right"></div>
 
